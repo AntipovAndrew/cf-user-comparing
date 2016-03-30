@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Getting Started: Handling Form Submission</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Result</h1>
+<p th:text="'Both: ' + ${comparing.both}"/>
+<p th:text="${comparing.firstHandle} + ' win: ' + ${comparing.firstWin}"/>
+<p th:text="${comparing.secondHandle} + ' win: ' + ${comparing.secondWin}"/>
+<a href="/comparing">Compare another users</a>
+</body>
+</html>
