@@ -9,9 +9,6 @@ package com.antipov.cf.comparing;
 public class Comparing {
 	private String firstHandle;
 	private String secondHandle;
-	private int both;
-	private int firstWin;
-	private int secondWin;
 
 	public String getFirstHandle() {
 		return firstHandle;
@@ -27,29 +24,5 @@ public class Comparing {
 
 	public void setSecondHandle(String secondHandle) {
 		this.secondHandle = secondHandle;
-	}
-
-	public int getBoth() {
-		return both;
-	}
-
-	public void setBoth(int both) {
-		this.both = both;
-	}
-
-	public int getFirstWin() {
-		return firstWin;
-	}
-
-	public void setFirstWin(int firstWin) {
-		this.firstWin = firstWin;
-	}
-
-	public int getSecondWin() {
-		return secondWin;
-	}
-
-	public void setSecondWin(int secondWin) {
-		this.secondWin = secondWin;
 	}
 }

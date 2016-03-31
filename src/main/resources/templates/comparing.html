@@ -3,17 +3,63 @@
 <head>
     <title>CF User Comparing</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link type="text/css" href="css/main.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>Compare</h1>
+<div>
+    <h2>Compare Codeforces users</h2>
 
-<form action="#" th:action="@{/comparing}" th:object="${comparing}" method="post">
-    <p>
-        First Handle: <input type="text" th:field="*{firstHandle}"/>
-        Second Handle: <input type="text" th:field="*{secondHandle}"/>
-    </p>
+    <form action="#" th:action="@{/comparing}" th:object="${comparing}" method="post">
+        <div><label>First Handle</label> <input type="text" th:field="*{firstHandle}"/></div>
 
-    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
-</form>
+        <div><label>Second Handle</label> <input type="text" th:field="*{secondHandle}"/></div>
+
+        <div><input type="submit" value="Compare"/></div>
+    </form>
+</div>
+<p style="color: white;">__</p>
+<div th:unless="${!showRes}">
+    <table>
+        <thead>
+        <tr>
+            <th>No</th>
+            <th>Contest</th>
+            <th>
+                <a th:href="'http://codeforces.com/profile/' + ${comparing.firstHandle}">
+                    <div th:text="${comparing.firstHandle}"></div>
+                </a>
+            </th>
+            <th>
+                <a th:href="'http://codeforces.com/profile/' + ${comparing.firstHandle}">
+                    <div th:text="${comparing.secondHandle}"></div>
+                </a>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contest: ${contests}"
+            th:class="${contest.getTrClass()}">
+            <td>
+                <div th:text="${contest.index}"></div>
+            </td>
+            <td>
+                <a th:href="'http://codeforces.com/contest/' + ${contest.contestId} + '/standings'">
+                    <div th:text="${contest.contestName}"></div>
+                </a>
+            </td>
+            <td>
+                <a th:href="'http://codeforces.com/submissions/' + ${contest.firstHandle} + '/contest/' + ${contest.contestId}">
+                    <div th:text="${contest.firstPlace}"></div>
+                </a>
+            </td>
+            <td>
+                <a th:href="'http://codeforces.com/submissions/' + ${contest.secondHandle} + '/contest/' + ${contest.contestId}">
+                    <div th:text="${contest.secondPlace}"></div>
+                </a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 </body>
 </html>
