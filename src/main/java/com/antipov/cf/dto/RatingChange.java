@@ -18,6 +18,8 @@ public class RatingChange {
 
 	private String handle;
 
+	private int newRating;
+
 	public int getContestId() {
 		return contestId;
 	}
@@ -48,5 +50,13 @@ public class RatingChange {
 
 	public void setHandle(String handle) {
 		this.handle = handle;
+	}
+
+	public int getNewRating() {
+		return newRating;
+	}
+
+	public void setNewRating(int newRating) {
+		this.newRating = newRating;
 	}
 }

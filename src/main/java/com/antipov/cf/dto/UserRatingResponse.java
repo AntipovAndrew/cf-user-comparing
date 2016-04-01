@@ -11,20 +11,8 @@ import java.util.List;
  * Time: 0:00
  */
 @JsonIgnoreProperties
-public class UserRatingResponse {
-	private String status;
-
-	private String comment;
-
+public class UserRatingResponse extends Response{
 	private List<RatingChange> result;
-
-	public String getStatus() {
-		return status;
-	}
-
-	public void setStatus(String status) {
-		this.status = status;
-	}
 
 	public List<RatingChange> getResult() {
 		return result;
@@ -32,13 +20,5 @@ public class UserRatingResponse {
 
 	public void setResult(List<RatingChange> result) {
 		this.result = result;
-	}
-
-	public String getComment() {
-		return comment;
-	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
 	}
 }

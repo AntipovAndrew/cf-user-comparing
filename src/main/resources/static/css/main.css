@@ -12,30 +12,16 @@ body {
   width: 850px;
   height: 100%;
 }
-
+fieldset {
+    border: none;
+}
 h2 {
-  margin-top: 50px;
   margin-bottom: 30px;
 }
 
-form div {
-  float: left;
-  clear: left;
-  width: 100%;
-  padding-bottom: 1em;
-}
-
-form div > label {
-  width: 120px;
-  display: block;
-  margin: 0px;
-  margin-right: 20px;
-  padding: 0;
-}
-
-form div > input {
-  margin: 0px;
-  padding: 0px;
+form {
+  margin-bottom: 10px;
+  inline: block;
 }
 
 table {
@@ -70,15 +56,31 @@ th {
   background-color: #008080;
 }
 input[type="submit"] {
-    background: rgba(150, 150, 150, 0.5);
-    border: 0px;
-    padding: 5px 10px;
-    text-align: center;
-    text-decoration: none;
+  background: rgba(150, 150, 150, 0.5);
+  border: 0px;
+  padding: 5px 10px;
+  text-align: center;
+  height: 25px;
+  margin: 10px;
+  text-decoration: none;
 }
 input[type="text"] {
-     border-radius: 3px;
-     border: 1px solid #cccccc;
-     height: 25px;
-     padding: 5px;
+  border-radius: 3px;
+  border: 1px solid #cccccc;
+  height: 25px;
+  margin: 10px;
+  padding-left: 5px;
+}
+
+div.res {
+  text-align: center;
+  font-size: 36px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+div.res > span {
+  margin: 10px;
+  display: inline-block;
 }

@@ -20,4 +20,15 @@ public class RatingsHelper {
         }
         return teamContests.contains(ratingChange.getContestId());
     }
+
+    public String getColor(int rating) {
+        if(rating >= 2400) return "red";
+        if(rating >= 2200) return "#FF8C00";
+        if(rating >= 1900) return "#a0a";
+        if(rating >= 1600) return "blue";
+        if(rating >= 1400) return "#03A89E";
+        if(rating >= 1200) return "green";
+        return "gray";
+
+    }
 }

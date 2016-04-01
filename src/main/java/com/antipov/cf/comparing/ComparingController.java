@@ -1,8 +1,11 @@
 package com.antipov.cf.comparing;
 
 import com.antipov.cf.CodeforcesService;
+import com.antipov.cf.ContestCache;
 import com.antipov.cf.RatingsHelper;
+import com.antipov.cf.dto.Contest;
 import com.antipov.cf.dto.RatingChange;
+import org.joda.time.DateTime;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +35,9 @@ public class ComparingController {
 
     @Autowired
     private RatingsHelper ratingsHelper;
+
+	@Autowired
+	private ContestCache contestCache;
 
 	@RequestMapping(value = "/comparing", method = RequestMethod.GET)
 	public String comparingForm(Model model) {
@@ -71,6 +77,7 @@ public class ComparingController {
 		for(RatingChange change: secondContests) {
             if(ratingsHelper.isTeamContest(change)) continue;
 			if(!firstRanks.containsKey(change.getContestId())) continue;
+			Contest contest = contestCache.getContest(change.getContestId());
 			total++;
 			int firstRank = firstRanks.get(change.getContestId());
 			int secondRank = change.getRank();
@@ -79,18 +86,35 @@ public class ComparingController {
 			} else if(secondRank > firstRank) {
                 firstWin++;
             }
-            ContestInfo curContest = new ContestInfo(change.getContestId(),
+            ContestInfo curContestInfo = new ContestInfo(change.getContestId(),
                     change.getContestName(),
                     comparing.getFirstHandle(),
                     firstRank,
                     comparing.getSecondHandle(),
                     secondRank,
-                    total);
-            contestInfos.add(curContest);
+                    total,
+					new DateTime(contest.getStartTimeSeconds() * 1000));
+            contestInfos.add(curContestInfo);
 		}
         model.addAttribute("comparing", comparing);
         model.addAttribute("contests", contestInfos);
         model.addAttribute("firstWin", firstWin);
-        model.addAttribute("secondWin", secondWin);	}
+        model.addAttribute("secondWin", secondWin);
+
+		String firstColor;
+		if(firstContests.isEmpty()) {
+			firstColor = "black";
+		} else {
+			firstColor = ratingsHelper.getColor(firstContests.get(firstContests.size()-1).getNewRating());
+		}
+		String secondColor;
+		if(secondContests.isEmpty()) {
+			secondColor = "black";
+		} else {
+			secondColor = ratingsHelper.getColor(secondContests.get(secondContests.size()-1).getNewRating());
+		}
+		model.addAttribute("firstColor", firstColor);
+		model.addAttribute("secondColor", secondColor);
+	}
 
 }
