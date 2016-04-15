@@ -13,19 +13,22 @@
         <input type="text" th:field="*{firstHandle}" placeholder="First User Handle"/>
         <input type="text" th:field="*{secondHandle}" placeholder="Second User Handle"/>
         <input type="submit" value="Compare"/>
-        <!--<div><label>First Handle</label> <input type="text" th:field="*{firstHandle}"/></div>-->
-
-        <!--<div><label>Second Handle</label> <input type="text" th:field="*{secondHandle}"/></div>-->
-
-        <!--<div></div>-->
     </fieldset>
 </form>
 
 <div th:unless="${!showRes}">
     <div class="res">
-        <span th:style="'color: ' + ${firstColor} + ';'" th:text="${comparing.firstHandle}"/>
-        <span th:text="${firstWin} + ' : ' + ${secondWin}"/>
-        <span th:style="'color: ' + ${secondColor} + ';'" th:text="${comparing.secondHandle}"/>
+        <a th:style="'color: ' + ${firstColor} + ';'"
+           class="rated-user"
+           th:href="'http://codeforces.com/profile/' + ${comparing.firstHandle}"
+           th:text="${comparing.firstHandle}"></a>
+
+        <span th:text="${firstWin} + ' : ' + ${secondWin}"></span>
+
+        <a th:style="'color: ' + ${secondColor} + ';'"
+           class="rated-user"
+           th:href="'http://codeforces.com/profile/' + ${comparing.secondHandle}"
+           th:text="${comparing.secondHandle}"></a>
     </div>
     <div>
         <table>
@@ -35,14 +38,10 @@
                 <th>Date</th>
                 <th>Contest</th>
                 <th>
-                    <a th:href="'http://codeforces.com/profile/' + ${comparing.firstHandle}">
-                        <div th:text="${comparing.firstHandle}"></div>
-                    </a>
+                    <span th:text="${comparing.firstHandle}"></span>
                 </th>
                 <th>
-                    <a th:href="'http://codeforces.com/profile/' + ${comparing.secondHandle}">
-                        <div th:text="${comparing.secondHandle}"></div>
-                    </a>
+                    <span th:text="${comparing.secondHandle}"></span>
                 </th>
             </tr>
             </thead>

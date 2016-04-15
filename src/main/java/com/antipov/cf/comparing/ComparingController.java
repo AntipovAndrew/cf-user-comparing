@@ -50,6 +50,10 @@ public class ComparingController {
 	@RequestMapping(value = "/comparing", method = RequestMethod.POST)
 	public String comparingSubmit(@ModelAttribute Comparing comparing, Model model) {
 		try {
+            if(!comparing.isValid()) {
+                model.addAttribute("showRes", false);
+                return "comparing";
+            }
 			compareUsers(comparing, model);
             model.addAttribute("showRes", true);
 			return "comparing";

@@ -34,6 +34,7 @@ public class ContestCache {
             HashMap<Integer, Contest> next = new HashMap<>();
             contests.forEach(contest -> next.put(contest.getId(), contest));
             id2Contest = next;
+            logger.info("Contests were loaded");
         } catch (Exception e) {
             logger.error("Failed to load contests", e);
         } finally {

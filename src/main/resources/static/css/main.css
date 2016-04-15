@@ -16,7 +16,8 @@ fieldset {
     border: none;
 }
 h2 {
-  margin-bottom: 30px;
+  margin-bottom: 10px;
+  text-align: center;
 }
 
 form {
@@ -57,10 +58,11 @@ th {
 }
 input[type="submit"] {
   background: rgba(150, 150, 150, 0.5);
-  border: 0px;
+  border: 1px;
   padding: 5px 10px;
   text-align: center;
   height: 25px;
+  border-radius: 3px;
   margin: 10px;
   text-decoration: none;
 }
@@ -83,4 +85,10 @@ div.res {
 div.res > span {
   margin: 10px;
   display: inline-block;
+}
+
+.rated-user {
+  text-decoration: none;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-weight: bold;
 }

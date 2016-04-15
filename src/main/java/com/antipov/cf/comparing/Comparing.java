@@ -25,4 +25,12 @@ public class Comparing {
 	public void setSecondHandle(String secondHandle) {
 		this.secondHandle = secondHandle;
 	}
+
+	public boolean isValid() {
+		return !(isEmpty(firstHandle) || isEmpty(secondHandle) || firstHandle.equals(secondHandle));
+	}
+
+	private boolean isEmpty(String s) {
+		return s == null || s.isEmpty();
+	}
 }
